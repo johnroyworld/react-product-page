@@ -20,7 +20,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Product Homepage</h1>
+      <h1>Product Page</h1>
       <input
         type="text"
         placeholder="Search for a product..."
