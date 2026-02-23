@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import ProductList from './components/ProductList';
 import './App.css';
 
-function App() {
+const App = () => {
+  const products = [
+    { id: 1, name: 'Product 1', description: 'Description for Product 1', price: 10 },
+    { id: 2, name: 'Product 2', description: 'Description for Product 2', price: 20 },
+    { id: 3, name: 'Product 3', description: 'Description for Product 3', price: 30 },
+  ];
+
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Product Homepage</h1>
+      <input
+        type="text"
+        placeholder="Search for a product..."
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <ProductList products={filteredProducts} />
     </div>
   );
-}
+};
 
 export default App;
